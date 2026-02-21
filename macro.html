@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macro Nutrient Calculator - HealthTools AI</title>
+    <meta name="description" content="Free Macro Calculator. Get personalized protein, carb, and fat targets based on your TDEE and fitness goals.">
+    <link rel="canonical" href="https://healthtools-ai.github.io/macro.html">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebApplication","name":"Macro Calculator","url":"https://healthtools-ai.github.io/macro.html","applicationCategory":"HealthApplication","operatingSystem":"Web"}
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    .macro-bars { display: flex; gap: 20px; justify-content: center; margin-top: 20px; }
+    .macro-item { text-align: center; }
+    .macro-circle { width: 90px; height: 90px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; font-weight: 700; margin-bottom: 8px; }
+    .macro-circle .g { font-size: 1.4rem; }
+    .macro-circle .pct { font-size: 0.8rem; opacity: 0.9; }
+    .macro-label { font-size: 0.9rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <nav class="navbar"><div class="container"><a href="/" class="logo">🏥 HealthTools <span>AI</span></a><div class="nav-links"><a href="bmi.html">BMI</a><a href="tdee.html">TDEE</a><a href="caffeine.html">Caffeine</a><a href="macro.html">Macros</a></div><button class="nav-toggle" aria-label="Menu">☰</button></div></nav>
+
+    <div class="calc-page container">
+        <div class="calc-container">
+            <h1>🥗 Macro Calculator</h1>
+            <p class="subtitle">Protein, carbs & fat targets for your goals</p>
+
+            <div class="form-group">
+                <label>Sex</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="sex" value="male" checked> Male</label>
+                    <label><input type="radio" name="sex" value="female"> Female</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>Age</label><input type="number" id="age" placeholder="30"></div>
+                <div class="form-group"><label>Weight (kg)</label><input type="number" id="weight" placeholder="70" step="0.1"></div>
+            </div>
+            <div class="form-group"><label>Height (cm)</label><input type="number" id="height" placeholder="175" step="0.1"></div>
+            <div class="form-group">
+                <label>Activity Level</label>
+                <select id="activity">
+                    <option value="1.2">Sedentary</option>
+                    <option value="1.375">Lightly Active</option>
+                    <option value="1.55" selected>Moderately Active</option>
+                    <option value="1.725">Very Active</option>
+                    <option value="1.9">Extremely Active</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Goal</label>
+                <select id="goal">
+                    <option value="lose">Lose Weight (−500 cal)</option>
+                    <option value="maintain" selected>Maintain Weight</option>
+                    <option value="gain">Build Muscle (+300 cal)</option>
+                </select>
+            </div>
+            <button class="calc-btn" onclick="calcMacro()">Calculate Macros</button>
+            <div class="result" id="result">
+                <div class="value" id="calValue"></div>
+                <div class="label">calories / day</div>
+                <div class="macro-bars" id="macroBars"></div>
+            </div>
+        </div>
+
+        <div class="cta-section" style="max-width:560px;margin:40px auto 0;">
+            <h3>Need a Meal Plan to Match?</h3>
+            <p>Our Intermittent Fasting Meal Plan Template includes macro-balanced meals for 16:8 and 20:4 protocols.</p>
+            <a href="https://gumroad.com" class="btn" target="_blank" rel="noopener">Get It for $4.99 →</a>
+        </div>
+
+        <div class="info-section">
+            <h2>How Macros Are Calculated</h2>
+            <p>After calculating your TDEE, we split calories into macronutrients:</p>
+            <ul>
+                <li><strong>Protein:</strong> 30% of calories (4 cal/g) — essential for muscle repair</li>
+                <li><strong>Fat:</strong> 25% of calories (9 cal/g) — supports hormones and absorption</li>
+                <li><strong>Carbs:</strong> 45% of calories (4 cal/g) — primary energy source</li>
+            </ul>
+            <p>These ratios are a balanced starting point. Athletes or keto dieters may adjust.</p>
+        </div>
+    </div>
+
+    <footer><div class="container"><p class="disclaimer">⚠️ <strong>Disclaimer:</strong> This tool is for informational purposes only and does not constitute medical advice. Consult a healthcare professional for personalized guidance.</p><p>&copy; 2026 HealthTools AI</p></div></footer>
+
+    <script>
+    function calcMacro(){
+        const sex = document.querySelector('input[name="sex"]:checked').value;
+        const age = parseFloat(document.getElementById('age').value);
+        const w = parseFloat(document.getElementById('weight').value);
+        const h = parseFloat(document.getElementById('height').value);
+        const af = parseFloat(document.getElementById('activity').value);
+        const goal = document.getElementById('goal').value;
+        if(!age||!w||!h) return alert('Please fill in all fields.');
+        let bmr = 10*w + 6.25*h - 5*age + (sex==='male'?5:-161);
+        let cal = Math.round(bmr * af);
+        if(goal==='lose') cal -= 500;
+        if(goal==='gain') cal += 300;
+        const protein = Math.round(cal * 0.30 / 4);
+        const fat = Math.round(cal * 0.25 / 9);
+        const carbs = Math.round(cal * 0.45 / 4);
+        document.getElementById('calValue').textContent = cal.toLocaleString();
+        document.getElementById('macroBars').innerHTML = `
+            <div class="macro-item"><div class="macro-circle" style="background:#ef4444"><span class="g">${protein}g</span><span class="pct">30%</span></div><div class="macro-label">Protein</div></div>
+            <div class="macro-item"><div class="macro-circle" style="background:#f59e0b"><span class="g">${fat}g</span><span class="pct">25%</span></div><div class="macro-label">Fat</div></div>
+            <div class="macro-item"><div class="macro-circle" style="background:#3b82f6"><span class="g">${carbs}g</span><span class="pct">45%</span></div><div class="macro-label">Carbs</div></div>`;
+        document.getElementById('result').classList.add('show');
+    }
+    document.querySelector('.nav-toggle').addEventListener('click',()=>{document.querySelector('.nav-links').classList.toggle('open');});
+    </script>
+</body>
+</html>

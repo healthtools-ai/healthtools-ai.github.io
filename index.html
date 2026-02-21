@@ -1,114 +1,106 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HealthTools AI — AI 驅動的健康科技評測</title>
-    <meta name="description" content="用 AI 幫你找到最適合的健康 App、穿戴裝置與營養工具。專業評測、深度比較、實用推薦。">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0a0a0a;
-            color: #e0e0e0;
-            min-height: 100vh;
-        }
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-            padding: 2rem;
-            background: radial-gradient(ellipse at 50% 0%, rgba(16, 185, 129, 0.15) 0%, transparent 60%);
-        }
-        .logo { font-size: 4rem; margin-bottom: 1rem; }
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #10b981, #06d6a0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-        }
-        .tagline {
-            font-size: 1.2rem;
-            color: #9ca3af;
-            max-width: 500px;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-        .categories {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 3rem;
-        }
-        .cat-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 1.5rem;
-            width: 180px;
-            transition: all 0.3s;
-        }
-        .cat-card:hover {
-            border-color: #10b981;
-            background: rgba(16, 185, 129, 0.08);
-            transform: translateY(-4px);
-        }
-        .cat-icon { font-size: 2rem; margin-bottom: 0.5rem; }
-        .cat-title { font-weight: 600; font-size: 0.95rem; }
-        .coming-soon {
-            display: inline-block;
-            background: rgba(16, 185, 129, 0.15);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: #10b981;
-            padding: 0.75rem 2rem;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 500;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: #6b7280;
-            font-size: 0.85rem;
-        }
-    </style>
+    <title>HealthTools AI - Free Health & Fitness Calculators</title>
+    <meta name="description" content="Free, accurate health calculators powered by science. BMI, TDEE, Macro, and Caffeine calculators. No signup required.">
+    <meta name="keywords" content="BMI calculator, TDEE calculator, macro calculator, caffeine calculator, health tools, fitness calculator">
+    <meta property="og:title" content="HealthTools AI - Free Health & Fitness Calculators">
+    <meta property="og:description" content="Free, accurate health calculators powered by science. No signup required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://healthtools-ai.github.io">
+    <link rel="canonical" href="https://healthtools-ai.github.io">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "HealthTools AI",
+      "url": "https://healthtools-ai.github.io",
+      "description": "Free health and fitness calculators powered by science."
+    }
+    </script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="hero">
-        <div class="logo">🏥🤖</div>
-        <h1>HealthTools AI</h1>
-        <p class="tagline">
-            用 AI 幫你找到最適合的健康工具。<br>
-            App 評測 · 穿戴裝置比較 · 營養工具推薦
-        </p>
-        <div class="categories">
-            <div class="cat-card">
-                <div class="cat-icon">📱</div>
-                <div class="cat-title">健康 App 評測</div>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">🏥 HealthTools <span>AI</span></a>
+            <div class="nav-links">
+                <a href="bmi.html">BMI</a>
+                <a href="tdee.html">TDEE</a>
+                <a href="caffeine.html">Caffeine</a>
+                <a href="macro.html">Macros</a>
             </div>
-            <div class="cat-card">
-                <div class="cat-icon">⌚</div>
-                <div class="cat-title">穿戴裝置</div>
+            <button class="nav-toggle" aria-label="Menu">☰</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Free Health & Fitness Calculators</h1>
+            <p>Science-backed tools to help you understand your body better. No signup. No ads. 100% free.</p>
+        </div>
+    </section>
+
+    <section class="tools-grid container">
+        <a href="bmi.html" class="tool-card">
+            <div class="tool-icon">⚖️</div>
+            <h2>BMI Calculator</h2>
+            <p>Calculate your Body Mass Index and understand what it means for your health.</p>
+        </a>
+        <a href="tdee.html" class="tool-card">
+            <div class="tool-icon">🔥</div>
+            <h2>TDEE Calculator</h2>
+            <p>Find your Total Daily Energy Expenditure to plan your nutrition goals.</p>
+        </a>
+        <a href="caffeine.html" class="tool-card">
+            <div class="tool-icon">☕</div>
+            <h2>Caffeine Calculator</h2>
+            <p>Track your daily caffeine intake and know when it's safe to have another cup.</p>
+        </a>
+        <a href="macro.html" class="tool-card">
+            <div class="tool-icon">🥗</div>
+            <h2>Macro Calculator</h2>
+            <p>Get personalized macronutrient targets based on your goals.</p>
+        </a>
+    </section>
+
+    <section class="products container">
+        <h2>Level Up Your Fitness Journey</h2>
+        <p class="section-subtitle">Premium resources designed to help you reach your goals faster.</p>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-badge">$2.99</div>
+                <h3>30-Day Fitness Challenge</h3>
+                <p>Progressive daily workouts in a beautiful printable calendar. Build habits that stick.</p>
+                <a href="https://gumroad.com" class="btn btn-primary" target="_blank" rel="noopener">Get It →</a>
             </div>
-            <div class="cat-card">
-                <div class="cat-icon">🥗</div>
-                <div class="cat-title">營養工具</div>
+            <div class="product-card">
+                <div class="product-badge">$4.99</div>
+                <h3>IF Meal Plan Template</h3>
+                <p>Complete 16:8 and 20:4 intermittent fasting meal plans with shopping lists.</p>
+                <a href="https://gumroad.com" class="btn btn-primary" target="_blank" rel="noopener">Get It →</a>
             </div>
-            <div class="cat-card">
-                <div class="cat-icon">🧘</div>
-                <div class="cat-title">身心健康</div>
+            <div class="product-card">
+                <div class="product-badge">$3.99</div>
+                <h3>Fitness Tracking Spreadsheet</h3>
+                <p>Track weight, workouts, nutrition & sleep with built-in charts and formulas.</p>
+                <a href="https://gumroad.com" class="btn btn-primary" target="_blank" rel="noopener">Get It →</a>
             </div>
         </div>
-        <div class="coming-soon">🚀 即將上線 — Coming Soon</div>
-    </div>
+    </section>
+
     <footer>
-        © 2026 HealthTools AI. All rights reserved.
+        <div class="container">
+            <p class="disclaimer">⚠️ <strong>Disclaimer:</strong> These tools are for informational purposes only and do not constitute medical advice. Always consult a qualified healthcare professional before making changes to your diet or exercise routine.</p>
+            <p>&copy; 2026 HealthTools AI. All rights reserved.</p>
+        </div>
     </footer>
+    <script>
+    document.querySelector('.nav-toggle').addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.toggle('open');
+    });
+    </script>
 </body>
 </html>
