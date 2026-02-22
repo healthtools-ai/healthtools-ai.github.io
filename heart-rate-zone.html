@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>運動心率區間計算器 — Karvonen 公式 | Heart Rate Zone Calculator | HealthTools AI</title>
+    <meta name="description" content="免費運動心率區間計算器，使用 Karvonen 公式計算5個心率訓練區間：暖身、燃脂、有氧、無氧、極限。Free Heart Rate Zone Calculator.">
+    <meta name="keywords" content="心率區間計算器,heart rate zone calculator,Karvonen公式,燃脂心率,有氧心率,最大心率,運動心率">
+    <meta property="og:title" content="運動心率區間計算器 — Karvonen 公式 | HealthTools AI">
+    <meta property="og:description" content="免費心率區間計算器，找到你的最佳燃脂與有氧訓練心率。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://healthtools-ai.github.io/heart-rate-zone.html">
+    <link rel="canonical" href="https://healthtools-ai.github.io/heart-rate-zone.html">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3984862454018134" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .zone { padding: 16px; border-radius: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; color: white; }
+        .zone .name { font-weight: 700; }
+        .zone .range { font-size: 1.1rem; font-weight: 600; }
+        .zone .desc { font-size: 0.8rem; opacity: 0.9; }
+        .zone1 { background: #60a5fa; }
+        .zone2 { background: #34d399; }
+        .zone3 { background: #fbbf24; color: #1e293b; }
+        .zone4 { background: #f97316; }
+        .zone5 { background: #ef4444; }
+        .hr-info { display: flex; gap: 16px; justify-content: center; margin-top: 16px; margin-bottom: 8px; }
+        .hr-info .item { text-align: center; }
+        .hr-info .val { font-size: 1.3rem; font-weight: 700; color: var(--primary); }
+        .hr-info .lbl { font-size: 0.8rem; color: var(--text-muted); }
+        .cross-links { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 24px; }
+        .cross-links a { padding: 8px 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: var(--text); font-size: 0.85rem; transition: all 0.2s; }
+        .cross-links a:hover { border-color: var(--primary); color: var(--primary); }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">🏥 HealthTools <span>AI</span></a>
+            <div class="nav-links">
+                <a href="bmi-calculator.html">BMI</a>
+                <a href="tdee-calculator.html">TDEE</a>
+                <a href="body-fat-calculator.html">體脂率</a>
+                <a href="water-intake-calculator.html">飲水量</a>
+                <a href="heart-rate-zone.html">心率區間</a>
+            </div>
+            <button class="nav-toggle" aria-label="Menu">☰</button>
+        </div>
+    </nav>
+
+    <div class="calc-page">
+        <div class="calc-container">
+            <h1>❤️ 運動心率區間計算器</h1>
+            <p class="subtitle">Heart Rate Zone Calculator — Karvonen Method</p>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>年齡 Age</label>
+                    <input type="number" id="age" placeholder="25" min="10" max="120">
+                </div>
+                <div class="form-group">
+                    <label>安靜心率 Resting HR (bpm)</label>
+                    <input type="number" id="rhr" placeholder="70" min="30" max="120">
+                </div>
+            </div>
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:16px;">💡 安靜心率：早晨起床前測量，或留空使用預設值 70 bpm</p>
+
+            <button class="calc-btn" onclick="calculate()">計算 Calculate</button>
+
+            <div id="result" class="result">
+                <div class="hr-info">
+                    <div class="item"><div class="val" id="mhrVal">—</div><div class="lbl">最大心率 MHR</div></div>
+                    <div class="item"><div class="val" id="rhrVal">—</div><div class="lbl">安靜心率 RHR</div></div>
+                    <div class="item"><div class="val" id="hrrVal">—</div><div class="lbl">心率儲備 HRR</div></div>
+                </div>
+                <div id="zones"></div>
+            </div>
+
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-top:16px;">
+                最大心率 MHR = 220 - 年齡<br>
+                心率儲備 HRR = MHR - 安靜心率<br>
+                目標心率 = HRR × 強度% + 安靜心率（Karvonen 公式）
+            </p>
+
+            <div class="cross-links">
+                <a href="bmi-calculator.html">⚖️ BMI 計算器</a>
+                <a href="tdee-calculator.html">🔥 TDEE 計算器</a>
+                <a href="body-fat-calculator.html">📐 體脂率計算器</a>
+                <a href="water-intake-calculator.html">💧 飲水量計算器</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p class="disclaimer">⚠️ <strong>免責聲明：</strong>本工具僅供參考，不構成醫療建議。如有健康疑慮請諮詢專業醫療人員。</p>
+            <p>&copy; 2026 HealthTools AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+    document.querySelector('.nav-toggle').addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.toggle('open');
+    });
+
+    function calculate() {
+        const age = parseFloat(document.getElementById('age').value);
+        if (!age) return alert('請填寫年齡');
+        const rhr = parseFloat(document.getElementById('rhr').value) || 70;
+        const mhr = 220 - age;
+        const hrr = mhr - rhr;
+
+        document.getElementById('mhrVal').textContent = mhr;
+        document.getElementById('rhrVal').textContent = rhr;
+        document.getElementById('hrrVal').textContent = hrr;
+
+        const zones = [
+            { name: 'Zone 1 暖身', desc: 'Warm Up / Recovery', lo: 0.50, hi: 0.60, cls: 'zone1' },
+            { name: 'Zone 2 燃脂', desc: 'Fat Burn', lo: 0.60, hi: 0.70, cls: 'zone2' },
+            { name: 'Zone 3 有氧', desc: 'Aerobic / Cardio', lo: 0.70, hi: 0.80, cls: 'zone3' },
+            { name: 'Zone 4 無氧', desc: 'Anaerobic / Threshold', lo: 0.80, hi: 0.90, cls: 'zone4' },
+            { name: 'Zone 5 極限', desc: 'Max Effort / VO2max', lo: 0.90, hi: 1.00, cls: 'zone5' },
+        ];
+
+        let html = '';
+        zones.forEach(z => {
+            const lo = Math.round(hrr * z.lo + rhr);
+            const hi = Math.round(hrr * z.hi + rhr);
+            html += '<div class="zone ' + z.cls + '"><div><div class="name">' + z.name + '</div><div class="desc">' + z.desc + '</div></div><div class="range">' + lo + ' - ' + hi + ' bpm</div></div>';
+        });
+        document.getElementById('zones').innerHTML = html;
+        document.getElementById('result').classList.add('show');
+    }
+    </script>
+</body>
+</html>

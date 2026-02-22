@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>體脂率計算器 — US Navy 公式 | Body Fat Calculator | HealthTools AI</title>
+    <meta name="description" content="免費體脂率計算器，使用美國海軍(US Navy)公式，輸入腰圍、頸圍、臀圍、身高即時計算體脂百分比。Free Body Fat % Calculator.">
+    <meta name="keywords" content="體脂率計算器,body fat calculator,US Navy method,體脂百分比,腰圍,頸圍,身體組成">
+    <meta property="og:title" content="體脂率計算器 — US Navy 公式 | HealthTools AI">
+    <meta property="og:description" content="免費體脂率計算器，US Navy 公式估算你的體脂百分比。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://healthtools-ai.github.io/body-fat-calculator.html">
+    <link rel="canonical" href="https://healthtools-ai.github.io/body-fat-calculator.html">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3984862454018134" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .bf-category { margin-top: 16px; padding: 12px 20px; border-radius: 8px; font-weight: 600; text-align: center; }
+        .bf-low { background: #fef3c7; color: #92400e; }
+        .bf-normal { background: #d1fae5; color: #065f46; }
+        .bf-high { background: #fed7aa; color: #9a3412; }
+        .bf-obese { background: #fecaca; color: #991b1b; }
+        .bf-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.85rem; }
+        .bf-table th, .bf-table td { padding: 8px 10px; border: 1px solid var(--border); text-align: center; }
+        .bf-table th { background: var(--bg); font-weight: 600; }
+        .cross-links { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 24px; }
+        .cross-links a { padding: 8px 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: var(--text); font-size: 0.85rem; transition: all 0.2s; }
+        .cross-links a:hover { border-color: var(--primary); color: var(--primary); }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">🏥 HealthTools <span>AI</span></a>
+            <div class="nav-links">
+                <a href="bmi-calculator.html">BMI</a>
+                <a href="tdee-calculator.html">TDEE</a>
+                <a href="body-fat-calculator.html">體脂率</a>
+                <a href="water-intake-calculator.html">飲水量</a>
+                <a href="heart-rate-zone.html">心率區間</a>
+            </div>
+            <button class="nav-toggle" aria-label="Menu">☰</button>
+        </div>
+    </nav>
+
+    <div class="calc-page">
+        <div class="calc-container">
+            <h1>📐 體脂率計算器</h1>
+            <p class="subtitle">Body Fat % Calculator — US Navy Method</p>
+
+            <div class="form-group">
+                <label>性別 Gender</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="gender" value="male" checked onchange="toggleHip()"> 男 Male</label>
+                    <label><input type="radio" name="gender" value="female" onchange="toggleHip()"> 女 Female</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>身高 Height (cm)</label>
+                <input type="number" id="height" placeholder="170" min="100" max="250">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>腰圍 Waist (cm)</label>
+                    <input type="number" id="waist" placeholder="80" min="40" max="200" step="0.1">
+                </div>
+                <div class="form-group">
+                    <label>頸圍 Neck (cm)</label>
+                    <input type="number" id="neck" placeholder="37" min="20" max="80" step="0.1">
+                </div>
+            </div>
+            <div class="form-group" id="hipGroup" style="display:none;">
+                <label>臀圍 Hip (cm) — 女性必填</label>
+                <input type="number" id="hip" placeholder="95" min="50" max="200" step="0.1">
+            </div>
+
+            <button class="calc-btn" onclick="calculate()">計算 Calculate</button>
+
+            <div id="result" class="result">
+                <div class="value" id="bfValue">—</div>
+                <div class="label">體脂率 Body Fat %</div>
+                <div id="categoryBox"></div>
+            </div>
+
+            <h3 style="margin-top:32px;font-size:1rem;">體脂率分類參考</h3>
+            <table class="bf-table">
+                <tr><th>分類</th><th>男性</th><th>女性</th></tr>
+                <tr><td>必需脂肪 Essential</td><td>2-5%</td><td>10-13%</td></tr>
+                <tr><td>運動員 Athletes</td><td>6-13%</td><td>14-20%</td></tr>
+                <tr><td>健康 Fitness</td><td>14-17%</td><td>21-24%</td></tr>
+                <tr><td>標準 Average</td><td>18-24%</td><td>25-31%</td></tr>
+                <tr><td>肥胖 Obese</td><td>≥25%</td><td>≥32%</td></tr>
+            </table>
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-top:8px;">
+                US Navy 公式：男 495÷(1.0324-0.19077×log(腰-頸)+0.15456×log(身高))-450<br>
+                女 495÷(1.29579-0.35004×log(腰+臀-頸)+0.22100×log(身高))-450
+            </p>
+
+            <div class="cross-links">
+                <a href="bmi-calculator.html">⚖️ BMI 計算器</a>
+                <a href="tdee-calculator.html">🔥 TDEE 計算器</a>
+                <a href="water-intake-calculator.html">💧 飲水量計算器</a>
+                <a href="heart-rate-zone.html">❤️ 心率區間計算器</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p class="disclaimer">⚠️ <strong>免責聲明：</strong>本工具僅供參考，不構成醫療建議。如有健康疑慮請諮詢專業醫療人員。</p>
+            <p>&copy; 2026 HealthTools AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+    document.querySelector('.nav-toggle').addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.toggle('open');
+    });
+
+    function toggleHip() {
+        const g = document.querySelector('input[name="gender"]:checked').value;
+        document.getElementById('hipGroup').style.display = g === 'female' ? 'block' : 'none';
+    }
+
+    function calculate() {
+        const gender = document.querySelector('input[name="gender"]:checked').value;
+        const h = parseFloat(document.getElementById('height').value);
+        const waist = parseFloat(document.getElementById('waist').value);
+        const neck = parseFloat(document.getElementById('neck').value);
+        if (!h || !waist || !neck) return alert('請填寫所有欄位');
+
+        let bf;
+        if (gender === 'male') {
+            bf = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(h)) - 450;
+        } else {
+            const hip = parseFloat(document.getElementById('hip').value);
+            if (!hip) return alert('女性請填寫臀圍');
+            bf = 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.22100 * Math.log10(h)) - 450;
+        }
+        bf = Math.max(0, bf);
+
+        document.getElementById('bfValue').textContent = bf.toFixed(1) + '%';
+        document.getElementById('result').classList.add('show');
+
+        let cat, cls;
+        if (gender === 'male') {
+            if (bf < 6) { cat = '過低 Essential Fat'; cls = 'bf-low'; }
+            else if (bf < 18) { cat = '標準 Normal'; cls = 'bf-normal'; }
+            else if (bf < 25) { cat = '偏高 Above Average'; cls = 'bf-high'; }
+            else { cat = '肥胖 Obese'; cls = 'bf-obese'; }
+        } else {
+            if (bf < 14) { cat = '過低 Essential Fat'; cls = 'bf-low'; }
+            else if (bf < 25) { cat = '標準 Normal'; cls = 'bf-normal'; }
+            else if (bf < 32) { cat = '偏高 Above Average'; cls = 'bf-high'; }
+            else { cat = '肥胖 Obese'; cls = 'bf-obese'; }
+        }
+        document.getElementById('categoryBox').innerHTML = '<div class="bf-category ' + cls + '">' + cat + '</div>';
+    }
+    </script>
+</body>
+</html>
