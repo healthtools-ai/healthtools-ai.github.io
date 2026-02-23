@@ -1,25 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://healthtools-ai.github.io/</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://healthtools-ai.github.io/bmi.html</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://healthtools-ai.github.io/bmi-calculator.html</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://healthtools-ai.github.io/tdee.html</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://healthtools-ai.github.io/tdee-calculator.html</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://healthtools-ai.github.io/body-fat-calculator.html</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://healthtools-ai.github.io/macro.html</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://healthtools-ai.github.io/caffeine.html</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://healthtools-ai.github.io/heart-rate-zone.html</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://healthtools-ai.github.io/water-intake-calculator.html</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://healthtools-ai.github.io/blog/</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://healthtools-ai.github.io/blog/bmi-guide.html</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://healthtools-ai.github.io/blog/tdee-guide.html</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://healthtools-ai.github.io/blog/intermittent-fasting-guide.html</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://healthtools-ai.github.io/bmi-guide.html</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://healthtools-ai.github.io/tdee-guide.html</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://healthtools-ai.github.io/body-fat-guide.html</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://healthtools-ai.github.io/heart-rate-training-guide.html</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://healthtools-ai.github.io/water-intake-guide.html</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://healthtools-ai.github.io/best-ai-health-tracking-apps-2026.html</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://healthtools-ai.github.io/smart-wearables-vs-ai-health-apps.html</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://healthtools-ai.github.io/top-5-ai-nutrition-analysis-tools.html</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://healthtools-ai.github.io/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://healthtools-ai.github.io/bmi</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://healthtools-ai.github.io/tdee</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://healthtools-ai.github.io/bodyfat</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://healthtools-ai.github.io/macro</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://healthtools-ai.github.io/diet</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://healthtools-ai.github.io/pricing</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
